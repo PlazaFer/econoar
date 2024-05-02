@@ -1,35 +1,45 @@
+import { useMemo } from 'react'
 import styled from 'styled-components/native'
 import { Stack } from 'expo-router'
 import LinkButton from 'src/components/LinkButton'
 import ScreenLayout from 'src/components/ScreenLayout'
-import { Text } from 'react-native'
-import useMainVariablesMutation from 'src/api/mutations/useMainVariablesMutation'
+import useMainVariablesQuery from 'src/api/mutations/useMainVariablesQuery'
 import CustomText from 'src/components/atoms/CustomText/CustomText'
-import { appTheme } from 'src/config/theme'
+import VariableType from 'src/api/types/variable.types'
 
 export default function HomeScreen() {
-  const { mutateAsync: getMainVariables, isPending: isGetMainVariablesPending } = useMainVariablesMutation()
+  const { data, isLoading } = useMainVariablesQuery()
 
-  const handleGetVariables = async () => {
-    const response = await getMainVariables()
-
-    console.log('response', JSON.stringify(response.data, null, 2))
-  }
+  const inflacionMensual = useMemo(() => {
+    return data?.results?.find((element) => {
+      if (element.idVariable === VariableType.InflacionMensualVariacionPorcentaje) return element
+    })
+  }, [data])
 
   return (
     <ScreenLayout testID="home-screen-layout">
       <S.Content testID="home-screen-content">
         <Stack.Screen options={{ title: 'Home Screen' }} />
 
-        <S.Title testID="home-screen-title">🏠</S.Title>
-        <S.Text testID="home-screen-text">Go to app/index.tsx to edit</S.Text>
-
-        <LinkButton href="/second" text="Go To Second Screen" />
-        <S.FetchButton onPress={handleGetVariables} disabled={isGetMainVariablesPending}>
-          <CustomText color='secondary' weight='extraBold' size='large'>
-            Text Prueba
-          </CustomText>
-        </S.FetchButton>
+        {/* <LinkButton href="/second" text="Go To Second Screen" /> */}
+        <S.InflacionWrapper>
+          {isLoading ? (
+            <>
+              <CustomText color="primary" weight="semiBold" size="big">
+                Cargando...
+              </CustomText>
+            </>
+          ) : (
+            <>
+              <CustomText color="primary" weight="semiBold" size="medium">
+                Inflacion Mensual:
+              </CustomText>
+              <CustomText color="secondary" weight="bold" size="small">
+                {`${inflacionMensual?.valor} %`}
+              </CustomText>
+            </>
+          )}
+        </S.InflacionWrapper>
       </S.Content>
     </ScreenLayout>
   )
@@ -61,5 +71,12 @@ const S = {
     border-width: ${(p) => p.theme.size(1, 'px')};
     border-radius: ${(p) => p.theme.size(5, 'px')};
     background-color: transparent;
+  `,
+  InflacionWrapper: styled.View`
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+    margin-top: 20px;
   `
 }
