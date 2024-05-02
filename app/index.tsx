@@ -8,6 +8,8 @@ import useMainVariablesQuery from 'src/api/mutations/useMainVariablesQuery'
 import CustomText from 'src/components/atoms/CustomText/CustomText'
 import VariableType from 'src/api/types/variable.types'
 import backgroundHeader from 'src/assets/images/header/BackgroundHeader.png'
+import Card from 'src/components/Molecules/Card/Card'
+import { S as C } from 'src/components/Molecules/Card/Card.styles'
 
 export default function HomeScreen() {
   const { data, isLoading } = useMainVariablesQuery()
@@ -46,6 +48,12 @@ export default function HomeScreen() {
           </S.InflacionWrapper>
         </S.BackgroundImageWrapper>
 
+        <S.ModifiedCard>
+          <CustomText>
+              Body de la card de ejemplo
+          </CustomText>
+        </S.ModifiedCard>
+
         {/* <LinkButton href="/second" text="Go To Second Screen" /> */}
       </S.Content>
     </ScreenLayout>
@@ -55,6 +63,7 @@ export default function HomeScreen() {
 const S = {
   Content: styled.View`
     flex: 1;
+    padding-horizontal: 16px;
   `,
   Title: styled.Text`
     color: ${(p) => p.theme.primary};
@@ -99,5 +108,8 @@ const S = {
     padding-vertical: 10;
     padding-left: 10;
     padding-right: 18;
+  `,
+  ModifiedCard: styled(C.CardView)`
+    margin-top: 20px;
   `
 }
