@@ -10,6 +10,8 @@ export interface IColors {
   primary: string;
   secondary: string;
   highlight: string;
+  white: string;
+  black: string;
 };
 
 export interface ITheme extends IColors {
@@ -24,6 +26,8 @@ export const appTheme: ITheme = {
   primary: '#6CACE4',
   secondary: '#FFB81C',
   highlight: '#7D4016',
+  white: "#FFFFFF",
+  black: "#000000",
   size: dimensions,
   windowHeight: `${height}px`,
   windowWidth: `${width}px`
