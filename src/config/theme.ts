@@ -4,7 +4,22 @@ import { dimensions, height, width } from 'src/utils/dimensions'
  * Theme For Styled Components
  * -
  */
-export const appTheme = {
+
+export interface IColors {
+  background: string;
+  primary: string;
+  secondary: string;
+  highlight: string;
+};
+
+export interface ITheme extends IColors {
+  size: (value: number, suffix: string) => string;
+  windowHeight: string;
+  windowWidth: string;
+}
+
+
+export const appTheme: ITheme = {
   background: '#FFFFFF',
   primary: '#6CACE4',
   secondary: '#FFB81C',
