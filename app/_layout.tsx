@@ -4,17 +4,24 @@ import { Slot } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
 import styled, { ThemeProvider, type DefaultTheme } from 'styled-components/native'
 import { appTheme, navTheme } from 'src/config/theme'
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 
 export default function AppLayout() {
+  const queryClient = new QueryClient()
   return (
-    <ThemeProvider theme={appTheme as DefaultTheme}>
-      <StatusBar style="light" />
-      <S.AppWrapper>
-        <NavProvider value={navTheme}>
-          <Slot screenOptions={{ headerShown: false }} />
-        </NavProvider>
-      </S.AppWrapper>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={appTheme as DefaultTheme}>
+        <StatusBar style="light" />
+        <S.AppWrapper>
+          <NavProvider value={navTheme}>
+            <Slot screenOptions={{ headerShown: false }} />
+          </NavProvider>
+        </S.AppWrapper>
+      </ThemeProvider>
+      </QueryClientProvider>
   )
 }
 
