@@ -5,10 +5,10 @@ import { dimensions, height, width } from 'src/utils/dimensions'
  * -
  */
 export const appTheme = {
-  background: '#222',
-  primary: '#FFF',
-  secondary: '#CCC',
-  highlight: '#FF2353',
+  background: '#FFFFFF',
+  primary: '#6CACE4',
+  secondary: '#FFB81C',
+  highlight: '#7D4016',
   size: dimensions,
   windowHeight: `${height}px`,
   windowWidth: `${width}px`

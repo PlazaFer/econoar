@@ -26,14 +26,14 @@ const S = {
   `,
   Title: styled.Text`
     color: ${(p) => p.theme.primary};
-    font-family: helvetica;
+    font-family: medium;
     font-weight: 900;
     font-size: ${(p) => p.theme.size(200, 'px')};
     margin-bottom: ${(p) => p.theme.size(10, 'px')};
   `,
   Text: styled.Text`
     color: ${(p) => p.theme.primary};
-    font-family: helvetica;
+    font-family: medium;
     font-weight: 600;
     font-size: ${(p) => p.theme.size(15, 'px')};
     margin-bottom: ${(p) => p.theme.size(15, 'px')};
