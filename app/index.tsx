@@ -4,6 +4,8 @@ import LinkButton from 'src/components/LinkButton'
 import ScreenLayout from 'src/components/ScreenLayout'
 import { Text } from 'react-native'
 import useMainVariablesMutation from 'src/api/mutations/useMainVariablesMutation'
+import CustomText from 'src/components/atoms/CustomText/CustomText'
+import { appTheme } from 'src/config/theme'
 
 export default function HomeScreen() {
   const { mutateAsync: getMainVariables, isPending: isGetMainVariablesPending } = useMainVariablesMutation()
@@ -24,7 +26,9 @@ export default function HomeScreen() {
 
         <LinkButton href="/second" text="Go To Second Screen" />
         <S.FetchButton onPress={handleGetVariables} disabled={isGetMainVariablesPending}>
-          <Text>{isGetMainVariablesPending ? 'Cargando...' : 'Traer Variables'}</Text>
+          <CustomText color='secondary' weight='extraBold' size='large'>
+            Text Prueba
+          </CustomText>
         </S.FetchButton>
       </S.Content>
     </ScreenLayout>
