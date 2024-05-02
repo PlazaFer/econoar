@@ -12,6 +12,8 @@ export interface IColors {
   highlight: string;
   white: string;
   black: string;
+  lightGray: string;
+  darkGray: string;
 };
 
 export interface ITheme extends IColors {
@@ -28,6 +30,8 @@ export const appTheme: ITheme = {
   highlight: '#7D4016',
   white: "#FFFFFF",
   black: "#000000",
+  lightGray: "#F9FAFC",
+  darkGray: "#D3DCE6",
   size: dimensions,
   windowHeight: `${height}px`,
   windowWidth: `${width}px`
