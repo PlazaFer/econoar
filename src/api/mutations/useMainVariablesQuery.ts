@@ -17,7 +17,7 @@ const useMainVariablesQuery = () =>
     queryKey: ['mainvariables'],
     queryFn: () => bcraApi.get<MainVariablesResponse>('estadisticas/v1/PrincipalesVariables').then((response) => response.data),
     enabled: true,
-    staleTime: Infinity
+    refetchInterval: 120000
   })
 
 export default useMainVariablesQuery
