@@ -33,6 +33,15 @@ enum VariableType {
     IndiceContratosLocacionICLLey27551Base306201 = 40,
     TasasOperacionesPasePasivasBCRA1DiaPlazoEAPorcentaje = 41,
   }
+
+  export const type = {
+    tasa: [9,10,11,12,13,14,34,41,35,7,6],
+    depositos: [19,21,22,23,24],
+    tipoCambio: [4,5],
+    inflacion: [27,28,29],
+    monetario: [15,16,17,18],
+    reservas: [1]
+  }
   
   export default VariableType;
   
